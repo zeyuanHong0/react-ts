@@ -16,14 +16,15 @@ function App() {
     name: string;
     age: number;
   };
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User | null>();
 
   const handleChange = () => {
     setUser({ name: "jack", age: 18 });
+    setUser(null);
   };
   return (
     <>
-      <div>123</div>
+      <div>123 {user?.age}</div>
     </>
   );
 }
