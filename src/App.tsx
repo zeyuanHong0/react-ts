@@ -1,5 +1,21 @@
 import { useState } from "react";
 
+// type Props = {
+//   className: string;
+// };
+
+interface Props {
+  className: string;
+}
+
+const Button = (props: Props) => {
+  return (
+    <div>
+      <button>123</button>
+    </div>
+  );
+};
+
 function App() {
   // const [str, setStr] = useState("121");
   // const [bool, setBool] = useState(true);
@@ -25,6 +41,7 @@ function App() {
   return (
     <>
       <div>123 {user?.age}</div>
+      <Button className={"blue"} />
     </>
   );
 }
