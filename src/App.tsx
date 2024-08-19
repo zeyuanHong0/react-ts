@@ -6,12 +6,15 @@ import { useState } from "react";
 
 interface Props {
   className: string;
+  children: React.ReactNode;
 }
 
 const Button = (props: Props) => {
+  console.log("🚀 ~ Button ~ props:", props);
+  const { className, children } = props;
   return (
     <div>
-      <button>123</button>
+      <button>{children}</button>
     </div>
   );
 };
@@ -41,7 +44,9 @@ function App() {
   return (
     <>
       <div>123 {user?.age}</div>
-      <Button className={"blue"} />
+      <Button className={"blue"}>
+        <div>按钮</div>
+      </Button>
     </>
   );
 }
