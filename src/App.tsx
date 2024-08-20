@@ -7,14 +7,18 @@ import { useState } from "react";
 interface Props {
   className: string;
   children: React.ReactNode;
+  onGetMsg?: (msg: string) => void;
 }
 
 const Button = (props: Props) => {
   console.log("🚀 ~ Button ~ props:", props);
-  const { className, children } = props;
+  const { className, children, onGetMsg } = props;
+  const handleClick = () => {
+    onGetMsg?.("hello world");
+  };
   return (
     <div>
-      <button>{children}</button>
+      <button onClick={handleClick}>{children}</button>
     </div>
   );
 };
@@ -41,10 +45,14 @@ function App() {
     setUser({ name: "jack", age: 18 });
     setUser(null);
   };
+
+  const getMsg = (msg: string) => {
+    console.log("🚀 ~ getMsg ~ msg:", msg);
+  };
   return (
     <>
       <div>123 {user?.age}</div>
-      <Button className={"blue"}>
+      <Button className={"blue"} onGetMsg={getMsg}>
         <div>按钮</div>
       </Button>
     </>
