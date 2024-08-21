@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // type Props = {
 //   className: string;
@@ -41,6 +41,18 @@ function App() {
   };
   const [user, setUser] = useState<User | null>();
 
+  const domRef = useRef<HTMLInputElement>(null);
+  const intervalRef = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    domRef.current?.focus();
+  }, []);
+
+  intervalRef.current = setInterval(() => {
+    console.log("hello world");
+    return () => clearInterval(intervalRef.current);
+  }, 1000);
+
   const handleChange = () => {
     setUser({ name: "jack", age: 18 });
     setUser(null);
@@ -52,6 +64,7 @@ function App() {
   return (
     <>
       <div>123 {user?.age}</div>
+      <input type="text" ref={domRef} />
       <Button className={"blue"} onGetMsg={getMsg}>
         <div>按钮</div>
       </Button>
